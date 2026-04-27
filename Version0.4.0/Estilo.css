@@ -181,11 +181,11 @@ a {
     scroll-snap-type: x mandatory; /* hace snap al deslizar */
     gap: 20px;
     padding: 0 5%; /* deja 5% a cada lado */
-    scrollbar-width: none; /* oculta scrollbar en Firefox */
+    scrollbar-width: none; /* oculta scrollbar */
 }
 
 #carrusel::-webkit-scrollbar {
-    display: none; /* oculta scrollbar en Chrome/Safari */
+    display: none; /* oculta scrollbar, segundo intento*/
 }
 
 .carrusel-item {
@@ -217,7 +217,7 @@ a {
 }
 /* Botones del Carrusel */
 #carrusel-wrapper {
-    position: relative; /* ahora los botones se posicionan respecto a esto */
+    position: relative; 
     width: 90%;
     margin: 0 auto; /* centra el wrapper */
 }
@@ -238,17 +238,22 @@ a {
 
 .carrusel-btn:hover {
     opacity: 1;
-    background-color: #2C2C2C; /* negro un poco más claro al hover */
+    background-color: #2C2C2C;
 }
 
-#btn-anterior { left: 10px; }
-#btn-siguiente { right: 10px; }
+#btn-anterior { 
+    left: 10px; 
+}
+#btn-siguiente { 
+    right: 10px; 
+               }
+
 /*SECCIÓN DE INTRODUCCIÓN*/
 #intro {
     width: 100%;
     padding: 60px 20px;
     background-color: #FFF;
-    text-align: center; /* centra todo el texto */
+    text-align: center; 
 }
 
 h1 {
@@ -260,7 +265,7 @@ h1 {
 
 h2 {
     font-size: 24px;
-    color: #ffffff; /* negro un poco más claro */
+    color: #ffffff; 
     font-weight: 400;
     margin: 0 0 20px 0;
     text-align: center;
@@ -270,7 +275,7 @@ p {
     font-size: 16px;
     color: #ffffff;
     max-width: 700px; /* limita el ancho para que no sea una línea gigante */
-    margin: 0 auto; /* centra el párrafo si tiene max-width */
+    margin: 0 auto; /* centra el párrafo */
     line-height: 1.6;
     text-align: center;
 }
@@ -303,15 +308,15 @@ p {
 }
 
 .btn-grande:hover {
-    background-color: #2C2C2C; /* negro más claro al pasar mouse */
+    background-color: #2C2C2C;
     color: #FFF;
     border-color: #2C2C2C;
-    transform: translateY(-3px); /* se levanta un poco */
+    transform: translateY(-3px);
 }
 #seccion-cta {
     width: 100%;
     padding: 50px 20px;
-    text-align: center; /* centra el botón */
+    text-align: center;
 }
 
 .btn-cta-rojo {
@@ -327,12 +332,12 @@ p {
     min-width: 250px;
     box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4); /* sombra roja sutil */
     transition: all 0.3s ease;
-    text-transform: uppercase; /* texto en mayúsculas para más impacto */
+    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .btn-cta-rojo:hover {
-    background-color: #D62828; /* rojo más oscuro al hover */
+    background-color: #D62828; 
     box-shadow: 0 6px 16px rgba(230, 57, 70, 0.6);
     transform: translateY(-4px); /* se levanta más que los otros */
 }
@@ -360,7 +365,7 @@ p {
 .footer-izquierda p {
     margin: 0;
     font-size: 14px;
-    color: #AAA; /* gris claro para que no compita */
+    color: #AAA; 
 }
 
 .footer-derecha .link-instagram {
@@ -370,7 +375,7 @@ p {
 }
 
 .footer-derecha .link-instagram:hover {
-    color: #E1306C; /* color de Instagram al hover */
+    color: #E1306C; 
 }
 
 .icono-ig {
@@ -380,7 +385,7 @@ p {
     vertical-align: middle;
 }
 
-/* Responsive: en móvil se apilan */
+/* En móvil se apilan */
 @media (max-width: 600px) {
     .footer-contenido {
         flex-direction: column;
@@ -434,7 +439,7 @@ p {
     display: block;
 }
 
-/* Móvil: sigue igual, imagen arriba */
+/* para movil sigue igual, pero con la imagen arriba */
 @media (max-width: 700px) {
     .perfil {
         flex-direction: column-reverse;
