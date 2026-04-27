@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>BTS: Reunion</title>
+	<link rel="stylesheet" href="estilo.css">
+		<script src="formulario.js"></script>
+</head>
+<!-- FORMULARIO -->
+	<div id="modal-registro" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal">&times;</span>
+        <h3>Formulario de Registro</h3>
+        <form id="form-registro">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="nacimiento" name="nacimiento" required>
+            
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            
+            <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
+    </div>
+</div>
+<body>
+<!-- NAVEGADOR -->
+	<header>
+		<nav id="menuPrincipal">
+		    <a href="index.html" id="logo-link">
+            <img src="icono.png" alt="Logo" id="logo-img">
+            <span id="logo-texto">BTS REUNIÓN</span>
+        </a>
+    <ul id="menulista">
+        <li class="menuitem">
+            <a href="calendario.html">CALENDARIO</a>
+        </li>
+        <li class="menuitem">
+            <a href="album.html">ALBUM</a>
+        </li>
+        <li class="menuitem">
+            <a href="#" class="abrir-modal">REGISTRARSE</a>
+        </li>
+    </ul>
+</nav>
+  </header>
+  <main>
+      
+      <section id="seccion-botones">
+    <div class="contenedor-botones">
+        <a href="calendario.html" class="btn-grande">CALENDARIO</a>
+        <a href="album.html" class="btn-grande">ALBUM</a>
+    </div>
+</section>
+    <section id="seccion-cta">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</p>
+        <br>
+    <a href="#" class="btn-cta-rojo abrir-modal">REGISTRARSE</a>
+</section>
+</main>
+<!-- FOOTER CON COPY Y LINK AL INSTAGRAM -->
+    <footer id="footer">
+    <div class="footer-contenido">
+        <div class="footer-izquierda">
+            <p>© 2026 BTS. Todos los derechos reservados.</p>
+        </div>
+        
+        <div class="footer-derecha">
+            <a href="https://instagram.com/tu_usuario" target="_blank" class="link-instagram">
+                <svg class="icono-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+        </div>
+   
+</body>
+    </html>
