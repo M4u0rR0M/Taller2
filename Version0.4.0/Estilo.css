@@ -1,0 +1,451 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* corta cualquier desborde horizontal */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% del alto de la pantalla */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+main {
+    flex: 1; /* empuja el footer hacia abajo */
+}
+
+header {
+    background-color: #1E1E1E;
+    width: 100%;
+    padding: 25px 0; 
+    margin: 0;
+    display: block;
+}
+.menuPrincupal {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    }
+#logo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #FFF;
+}
+
+#logo-img {
+    width: 30px;
+    height: 30px;
+}
+
+#logo-texto {
+    font-size: 14px;
+    font-weight: bold;
+}
+#menulista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right; 
+}
+
+.menuitem {
+    display: inline-block;
+    margin-left: 20px; 
+    margin-right: 20px;   
+}
+a {
+    text-decoration: none;
+}
+/* FORMULARIO */
+.modal {
+    display: none; /* oculto por defecto */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .modal-contenido {
+        max-width: 650px; /* más ancho */
+        padding: 60px 50px; /* más espacio interno */
+    }
+}
+/* Cuando se activa */
+.modal.activo {
+    display: flex;
+}
+
+/* Caja del formulario */
+.modal-contenido {
+    background-color: #FFF;
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Botón de cerrar X */
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #AAA;
+    cursor: pointer;
+}
+
+.cerrar-modal:hover {
+    color: #1E1E1E;
+}
+
+.modal-contenido h3 {
+    margin: 0 0 25px 0;
+    color: #1E1E1E;
+    text-align: center;
+}
+
+/* Estilos del formulario */
+#form-registro label {
+    display: block;
+    margin: 15px 0 5px 0;
+    color: #333;
+    font-weight: 500;
+}
+
+#form-registro input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #DDD;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+#form-registro input:focus {
+    outline: none;
+    border-color: #E63946;
+}
+
+.btn-enviar {
+    width: 100%;
+    margin-top: 25px;
+    background-color: #E63946;
+    color: #FFF;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #D62828;
+}
+/*COSAS DEL BODY*/
+#carrusel-contenedor {
+    width: 100%;
+    padding: 40px 0;
+    background-color: #2C2C2C;
+}
+
+#carrusel {
+    display: flex;
+    overflow-x: auto; /* permite scroll horizontal */
+    scroll-snap-type: x mandatory; /* hace snap al deslizar */
+    gap: 20px;
+    padding: 0 5%; /* deja 5% a cada lado */
+    scrollbar-width: none; /* oculta scrollbar en Firefox */
+}
+
+#carrusel::-webkit-scrollbar {
+    display: none; /* oculta scrollbar en Chrome/Safari */
+}
+
+.carrusel-item {
+    flex: 0 0 80%; /* cada item ocupa 80% del ancho visible */
+    height: 350px;
+    scroll-snap-align: center; /* centra el item al hacer scroll */
+    background-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.carrusel-item h3 {
+    margin: 15px 0 10px 0;
+    color: #1E1E1E;
+}
+
+.carrusel-item p {
+    padding: 0 20px;
+    color: #555;
+}
+/* Botones del Carrusel */
+#carrusel-wrapper {
+    position: relative; /* ahora los botones se posicionan respecto a esto */
+    width: 90%;
+    margin: 0 auto; /* centra el wrapper */
+}
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1E1E1E;
+    color: #FFF;
+    border: none;
+    font-size: 30px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+.carrusel-btn:hover {
+    opacity: 1;
+    background-color: #2C2C2C; /* negro un poco más claro al hover */
+}
+
+#btn-anterior { left: 10px; }
+#btn-siguiente { right: 10px; }
+/*SECCIÓN DE INTRODUCCIÓN*/
+#intro {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #FFF;
+    text-align: center; /* centra todo el texto */
+}
+
+h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #ffffff; /* negro un poco más claro */
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    color: #ffffff;
+    max-width: 700px; /* limita el ancho para que no sea una línea gigante */
+    margin: 0 auto; /* centra el párrafo si tiene max-width */
+    line-height: 1.6;
+    text-align: center;
+}
+/*BOTONES DEL CTA Y DEMÁS HTML*/
+#seccion-botones {
+    width: 100%;
+    padding: 40px 20px 80px 20px;
+    text-align: center;
+}
+
+.contenedor-botones {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* separación entre botones */
+    flex-wrap: wrap; /* en móvil se ponen uno abajo del otro */
+}
+
+.btn-grande {
+    display: inline-block;
+    background-color: #FFF;
+    color: #1E1E1E;
+    text-decoration: none; /* quita subrayado del link */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 18px 40px; /* alto y ancho del botón */
+    border-radius: 8px;
+    border: 2px solid #FFF;
+    min-width: 200px; /* ancho mínimo para que se vean grandes */
+    transition: all 0.3s ease; /* animación suave al hover */
+}
+
+.btn-grande:hover {
+    background-color: #2C2C2C; /* negro más claro al pasar mouse */
+    color: #FFF;
+    border-color: #2C2C2C;
+    transform: translateY(-3px); /* se levanta un poco */
+}
+#seccion-cta {
+    width: 100%;
+    padding: 50px 20px;
+    text-align: center; /* centra el botón */
+}
+
+.btn-cta-rojo {
+    display: inline-block;
+    background-color: #E63946; /* rojo fuerte para CTA */
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 50px; /* bien grande */
+    border-radius: 8px;
+    border: none;
+    min-width: 250px;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4); /* sombra roja sutil */
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* texto en mayúsculas para más impacto */
+    letter-spacing: 1px;
+}
+
+.btn-cta-rojo:hover {
+    background-color: #D62828; /* rojo más oscuro al hover */
+    box-shadow: 0 6px 16px rgba(230, 57, 70, 0.6);
+    transform: translateY(-4px); /* se levanta más que los otros */
+}
+
+.btn-cta-rojo:active {
+    transform: translateY(-1px); /* efecto al clickear */
+}
+/*Estilos del FOOTER*/
+#footer {
+    width: 100%;
+    background-color: #1E1E1E;
+    padding: 25px 0;
+    color: #FFF;
+}
+
+.footer-contenido {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* izquierda y derecha separados */
+    align-items: center; /* centrados verticalmente */
+}
+
+.footer-izquierda p {
+    margin: 0;
+    font-size: 14px;
+    color: #AAA; /* gris claro para que no compita */
+}
+
+.footer-derecha .link-instagram {
+    color: #FFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-derecha .link-instagram:hover {
+    color: #E1306C; /* color de Instagram al hover */
+}
+
+.icono-ig {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    vertical-align: middle;
+}
+
+/* Responsive: en móvil se apilan */
+@media (max-width: 600px) {
+    .footer-contenido {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+.perfil {
+    display: flex;
+    flex-direction: row-reverse; /* esto invierte el orden */
+    align-items: center;
+    gap: 40px;
+    padding: 60px 5%;
+    margin: 5%;
+    background-color: #2C2C2C;
+}
+
+.perfil-texto {
+    flex: 1;
+    text-align: left; /* mantiene texto alineado a la izquierda */
+}
+
+.perfil-texto h3 {
+    font-size: 26px;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.perfil-texto p {
+    font-size: 16px;
+    color: #fff;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.perfil-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.perfil-imagen {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.perfil-imagen img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Móvil: sigue igual, imagen arriba */
+@media (max-width: 700px) {
+    .perfil {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    
+    .perfil-imagen {
+        width: 220px;
+    }
+    
+    .perfil-imagen img {
+        height: 220px;
+    }
+}
