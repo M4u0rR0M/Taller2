@@ -47,5 +47,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iniciarAutoplay();
 });
-
-    //Formulario ↓
