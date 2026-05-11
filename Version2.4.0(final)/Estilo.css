@@ -1,0 +1,807 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Science Gothic', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, label, input, button, span {
+    font-family: 'Science Gothic', Arial, sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* corta cualquier desborde horizontal */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% del alto de la pantalla */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+    background-color: #000;
+    width: 100%;
+    padding: 25px 0; 
+    margin: 0;
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#menuPrincipal {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 5%;
+}
+#logo-img {
+    width: 80px;
+    height: auto;
+}
+#logo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #FFF;
+}
+
+/* Botón hamburguesa - SIEMPRE visible */
+#btn-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+#btn-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: #FFF;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* Animación X */
+#btn-menu.activo span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+#btn-menu.activo span:nth-child(2) {
+    opacity: 0;
+}
+#btn-menu.activo span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Menú lateral - SIEMPRE oculto por defecto */
+#menulista {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 600px;
+    height: 100vh;
+    background-color: #1E1E1E;
+    flex-direction: column;
+    padding: 100px 30px;
+    gap: 30px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+    display: flex;
+}
+
+#menulista.activo {
+    right: 0;
+}
+
+.menuitem a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 30px;
+    display: block;
+}
+
+.menuitem a:hover {
+    color: #E63946;
+}
+
+/* Overlay */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 999;
+}
+
+.menu-overlay.activo {
+    display: block;
+}
+/* FORMULARIO */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 25px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    background-color: #FFF;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease;
+    overflow: hidden;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #AAA;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.cerrar-modal:hover {
+    color: #1E1E1E;
+}
+
+/* Layout interno */
+.modal-body {
+    display: flex;
+}
+
+.modal-formulario {
+    flex: 1;
+    padding: 75px 50px;
+}
+
+.modal-imagen {
+    display: none; /* Oculta por defecto */
+}
+
+.modal-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-contenido h3 {
+    margin: 0 0 25px 0;
+    color: #1E1E1E;
+    text-align: center;
+}
+
+#form-registro label {
+    display: block;
+    margin: 15px 0 5px 0;
+    color: #333;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#form-registro input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #DDD;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+#form-registro input:focus {
+    outline: none;
+    border-color: #E63946;
+}
+
+.btn-enviar {
+    width: 100%;
+    margin-top: 25px;
+    background-color: #E63946;
+    color: #FFF;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #D62828;
+}
+
+/* Mensaje de éxito */
+#mensaje-exito.oculto {
+    display: none;
+}
+
+#mensaje-exito {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.check-icon {
+    width: 220px;
+    height: 220px;
+    background-color: transparent; /* sin fondo */
+    color: #9b9b9b; /* color del tick */
+    border: 2px solid #9b9b9b; /* borde gris opcional */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    margin: 0 auto 20px;
+}
+
+#mensaje-exito p {
+    color: #555;
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+/* Ocultar formulario cuando hay éxito */
+#form-registro.oculto,
+#modal-titulo.oculto {
+    display: none;
+}
+
+/* DESKTOP ≥1024px: 2 columnas */
+@media (min-width: 1024px) {
+    .modal-contenido {
+        max-width: 900px;
+        padding: 0;
+    }
+    
+    .modal-formulario {
+        padding: 60px 50px;
+    }
+    
+    .modal-imagen {
+        display: block;
+        flex: 1;
+    }
+}
+
+/*COSAS DEL BODY*/
+#img-principal {
+    width: 80%;
+    height: 10%;
+    border: 2px solid #610091;
+    margin-left: 10%;
+    align-items: center;
+}
+/*SECCIÓN DE INTRODUCCIÓN*/
+#intro {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #FFF;
+    text-align: center; /* centra todo el texto */
+}
+
+h1 {
+    font-size: 130px;
+    color: #ffffff;
+    margin: 0 0 -60px 0;
+    text-align: center;
+}
+#conga {
+    font-size: 100px;
+    color: #ffffff;
+    margin: 0 0 -60px 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 80px;
+    color: #ffffff;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+h3 {
+    font-size: 50px;
+    color: #ffffff;
+
+}
+
+p {
+    font-size: 30px;
+    color: #ffffff;
+    max-width: 1000px; /* limita el ancho para que no sea una línea gigante */
+    margin: 0 auto; /* centra el párrafo si tiene max-width */
+    line-height: 1.6;
+    text-align: center;
+}
+/*BOTONES DEL CTA Y DEMÁS HTML*/
+#seccion-botones {
+    width: 100%;
+    padding: 40px 20px 80px 20px;
+    text-align: center;
+}
+
+.contenedor-botones {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* separación entre botones */
+    flex-wrap: wrap; /* en móvil se ponen uno abajo del otro */
+}
+
+.btn-grande {
+    display: inline-block;
+    background-color: #FFF;
+    color: #1E1E1E;
+    text-decoration: none; /* quita subrayado del link */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 18px 40px; /* alto y ancho del botón */
+    border-radius: 8px;
+    border: 2px solid #FFF;
+    min-width: 200px; /* ancho mínimo para que se vean grandes */
+    transition: all 0.3s ease; /* animación suave al hover */
+}
+
+.btn-grande:hover {
+    background-color: #2C2C2C; /* negro más claro al pasar mouse */
+    color: #FFF;
+    border-color: #2C2C2C;
+    transform: translateY(-3px); /* se levanta un poco */
+}
+#seccion-cta {
+    width: 100%;
+    padding: 50px 20px;
+    text-align: center; /* centra el botón */
+}
+
+.btn-cta-rojo {
+    position: relative; /* Define el área de juego */
+  text-align: center;
+    display: inline-block;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 50px; /* bien grande */
+    border-radius: 8px;
+    border: none;
+    min-width: 250px;
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* texto en mayúsculas para más impacto */
+    letter-spacing: 1px;
+}
+
+.texto-boton {
+  position: absolute; /* Saca al texto del flujo normal */
+  top: 50%;           /* Lo baja a la mitad del contenedor */
+  left: 50%;          /* Lo mueve a la derecha a la mitad */
+  transform: translate(-50%, -50%); /* Lo centra exactamente */
+  
+  /* Estilos visuales */
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+  pointer-events: none; /* Hace que el clic pase a través del texto hacia el link */
+}
+
+.btn-cta-rojo:hover {
+    background-color: #D62828; /* rojo más oscuro al hover */
+    box-shadow: 0 6px 16px rgba(230, 57, 70, 0.6);
+    transform: translateY(-4px); /* se levanta más que los otros */
+}
+
+.btn-cta-rojo:active {
+    transform: translateY(-1px); /* efecto al clickear */
+}
+/*Estilos del FOOTER*/
+#footer {
+    width: 100%;
+    background-color: #1E1E1E;
+    padding: 25px 0;
+    color: #FFF;
+    z-index: 1000;
+}
+
+.footer-contenido {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* izquierda y derecha separados */
+    align-items: center; /* centrados verticalmente */
+}
+
+.footer-izquierda p {
+    margin: 0;
+    font-size: 20px;
+    color: #AAA; /* gris claro para que no compita */
+}
+
+.footer-derecha .link-instagram {
+    color: #FFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-derecha .link-instagram:hover {
+    color: #E1306C; /* color de Instagram al hover */
+}
+
+.icono-ig {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    vertical-align: middle;
+}
+
+/* Responsive: en móvil se apilan */
+@media (max-width: 600px) {
+    .footer-contenido {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+.perfil {
+    display: flex;
+    flex-direction: row-reverse; /* esto invierte el orden */
+    align-items: center;
+    gap: 40px;
+    padding: 5px 0%;
+    margin: 5%;
+    background-color: rgba(97, 0, 145, 0.3);
+}
+
+.perfil-texto {
+    flex: 1;
+    text-align: left; /* mantiene texto alineado a la izquierda */
+}
+
+.perfil-texto h3 {
+    font-size: 40px;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.perfil-texto p {
+    font-size: 25px;
+    color: #fff;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.perfil-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.perfil-imagen {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.perfil-imagen img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+/*Ubicacion y eso */
+.seccion-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 10px 0%;
+  background-color: white; /* o el color que uses */
+}
+
+.seccion-texto {
+  flex: 1; /* ocupa el espacio restante */
+  font-size: 32px;
+  color: #000000;
+}
+
+.seccion-texto h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+    color: #000000;
+
+}
+
+.seccion-texto p {
+  font-size: 32px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+    color: #000000;
+
+}
+
+.seccion-imagen {
+  flex: 1;
+}
+
+.seccion-imagen img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #E63946;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Móvil: se adapta lo necesario */
+/* Estilos Generales / Desktop */
+.perfil {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 40px;
+    padding: 5px 0;
+    margin: 5%;
+    background-color: rgba(97, 0, 145, 0.3);
+}
+
+.perfil-texto {
+    flex: 1;
+    text-align: left;
+}
+
+.perfil-texto h3 {
+    font-size: 40px;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.perfil-texto p {
+    font-size: 25px;
+    color: #fff;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.perfil-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.perfil-imagen {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.perfil-imagen img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Sección Hero / Ubicación */
+.seccion-hero {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 10px 5%;
+    background-color: white;
+}
+
+.seccion-texto {
+    flex: 1;
+    color: #000000;
+}
+
+.seccion-texto h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.seccion-texto p {
+    font-size: 32px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.seccion-imagen {
+    flex: 1;
+}
+
+.seccion-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #E63946;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Tablet/Móvil genérico */
+@media (max-width: 600px) {
+    .footer-contenido {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Móvil pequeño (ajustes específicos) */
+@media (max-width: 412px) {
+    /* Perfil */
+    .perfil {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .perfil-texto h3 {
+        font-size: 30px; /* Reducido para que quepa en móvil */
+        text-align: center;
+    }
+
+    .perfil-texto p {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .perfil-imagen {
+        width: 220px;
+    }
+
+    .perfil-imagen img {
+        height: 220px;
+    }
+
+    /* Tipografías Globales en Móvil */
+    h1 {
+        font-size: 35px;
+        text-align: center;
+        margin: 0 0 10px 0;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 15px; /* Corregido: añadido px */
+    }
+
+    p {
+        font-size: 18px;
+        max-width: 370px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    /* Elementos específicos */
+    #img-principal {
+        width: 80%;
+        height: 5%;
+        margin-left: 10%;
+    }
+
+    .img-fondo {
+        width: 200px;
+        height: 80px;
+    }
+
+    .texto-boton {
+        font-size: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .seccion-hero {
+        flex-direction: column-reverse;
+        gap: 30px;
+        padding: 40px 5%;
+    }
+    .seccion-texto p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+    color: #000000;
+}
+    .menuitem a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+}
+    .modal-imagen {
+        display: none !important;
+    }
+    #modal-titulo {
+        font-size: 25px;
+    }
+
+    .check-icon {
+        width: 150px;
+        height: 150px;
+        border: 2px solid #9b9b9b;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 75px;
+        margin: 0 auto 20px;
+        color: #9b9b9b;
+    }
+}

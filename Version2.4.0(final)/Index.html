@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@400;700&display=swap" rel="stylesheet">
+	<title>K-Pop Comi-Con</title>
+	<link rel="stylesheet" href="estilo.css">
+	<script src="funciones.js"></script>
+		<script src="formulario.js"></script>
+</head>
+<body>
+<!-- FORMULARIO -->
+  <div id="modal-registro" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal">&times;</span>
+        
+        <div class="modal-body">
+            <!-- Columna derecha: Imagen solo en desktop -->
+            <div class="modal-imagen">
+                <img src="formulario.png" alt="Imagen registro">
+            </div>
+            <!-- Columna izquierda: Formulario + Mensaje éxito -->
+            <div class="modal-formulario">
+                <h3 id="modal-titulo">Formulario de Registro</h3>
+                <form id="form-registro">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                    <label for="Número">Número de Teléfono:</label>
+                    <input type="number" id="nacimiento" name="numero" required>
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </form>
+
+                <!-- Mensaje de éxito oculto -->
+                <div id="mensaje-exito" class="oculto">
+                    <div class="check-icon">✓</div>
+                    <p id="mensaje-texto"></p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+<!-- NAVEGADOR -->
+		<header>
+  <nav id="menuPrincipal">
+    <a href="index.html" id="logo-link">
+      <img src="icono.png" alt="Logo" id="logo-img">
+      <span id="logo-texto"></span>
+    </a>
+
+    <!-- Botón hamburguesa -->
+    <button id="btn-menu" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul id="menulista">
+      <li class="menuitem">
+        <a href="#parteUno">Principal</a>
+        </li>
+      <li class="menuitem">
+        <a href="#parteDos">Información Extra</a>
+      </li>
+      <li class="menuitem">
+        <a href="#parteTres">¿Dónde Encontrarnos?</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+  <main>
+  <!-- sección principal -->  
+<br>
+<h1 id="parteUno">K-POP COMI CON</h1>
+<h2>en Argentina</h2>
+<p>Este 6 de Diciembre participa para entrar en el evento más grande de K-pop en Argentina y únete a la comi-con con miles de fans</p>
+<br>
+<img src="portada.jpg" alt="portada" id="img-principal">
+<!-- BOTONES + CTA -->
+    <section id="seccion-cta">
+                 <a href="#" class="btn-cta-rojo abrir-modal">
+                    <img src="cta.png" alt="Participa Ya" class="img-fondo">
+                        <span class="texto-boton">Participa Ya</span>
+</a>
+    </section>    
+        <br>
+   
+<!-- sección 1: Información extra -->
+ <h2 id="parteDos" class="conga">NO TE PIERDAS ESTOS EVENTOS!</h2>
+ <!-- info1 -->
+<section class="perfil">
+    <div class="perfil-texto">
+        <h3>Invitacion BTS confirmada!</h3>
+        <p>BTS fue invitado este año a interactuar con los fans de Argentina</p>
+    </div>
+    
+    <div class="perfil-imagen">
+        <img src="info1.jpg" alt="Foto de perfil">
+    </div>
+</section>
+<!-- info2 -->
+<section class="perfil">
+    <div class="perfil-texto">
+        <h3>Mercancía Autografiada!</h3>
+        <p>BTS también sortearán pósters, álbumes y artículos propios firmados por ellos. </p>
+    </div>
+    
+    <div class="perfil-imagen">
+        <img src="info2.jpg" alt="Foto de perfil">
+    </div>
+</section>
+<!-- info3 -->
+<section class="perfil">
+    <div class="perfil-texto">
+        <h3>Participa en el Cosplay!</h3>
+        <p> No olvides disfrazarte de tu artista favorito, y ganar premios por calidad</p>
+    </div>
+    
+    <div class="perfil-imagen">
+        <img src="info3.jpg" alt="Foto de perfil">
+    </div>
+</section>
+<br>
+<!-- sección 2: Donde encontrarnos -->
+<h2 id="parteTres">¿COMO ENCONTRARNOS?</h2>
+<br>
+<br>
+<br>
+<section class="seccion-hero">
+  <div class="seccion-imagen">
+    <img src="ubicacion.jpg" alt="Descripción de la imagen">
+  </div>
+  <div class="seccion-texto">
+    <p>
+      El evento se llevara a cabo el 6 de diciembre en el edificio de la comi-con Argentina, 
+      ubicada en la avenida Costanera Rafael Obligada 1221, Ciudad Autonoma de Buenos Aires
+    </p>
+  </div>
+  
+  
+</section>
+<!-- BOTONES + CTA -->
+ <br>
+    <section id="seccion-cta">
+        <h3>¿Que estas esperando?</h3>
+                 <a href="#" class="btn-cta-rojo abrir-modal">
+                    <img src="cta.png" alt="Participa Ya" class="img-fondo">
+                        <span class="texto-boton">Participa Ya</span>
+</a>
+    </section>    
+</main>
+<!-- FOOTER CON COPY Y LINK AL INSTAGRAM -->
+    <footer id="footer">
+        <div class="footer-contenido">
+            <div class="footer-izquierda">
+                <p>© 2026 BTS. Todos los derechos reservados.</p>
+            </div>
+            
+            <div class="footer-derecha">
+                <a href="https://instagram.com/tu_usuario" target="_blank" class="link-instagram">
+                    <svg class="icono-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
